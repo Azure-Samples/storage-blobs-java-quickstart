@@ -1,57 +1,50 @@
-# Project Name
+# Contributing
 
-(short, 1-3 sentenced, description of the project)
+This project welcomes contributions and suggestions.  Most contributions require you to agree to a
+Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
+the rights to use your contribution. For details, visit https://cla.microsoft.com.
 
-## Features
+When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
+a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
+provided by the bot. You will only need to do this once across all repos using our CLA.
 
-This project framework provides the following features:
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-* Feature 1
-* Feature 2
-* ...
+# How to run this project
 
-## Getting Started
+## Prerequisites
 
-### Prerequisites
+To complete this tutorial:
 
-(ideally very short, if any)
-
-- OS
-- Library version
-- ...
-
-### Installation
-
-(ideally very short)
-
-- npm install [package name]
-- mvn install
-- ...
-
-### Quickstart
-(Add steps to get up and running quickly)
-
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
+* Install [Eclipse](http://www.eclipse.org/downloads/)
 
 
-## Demo
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
-A demo app is included to show how to use the project.
+## Create a storage account using the Azure portal
 
-To run the demo, follow these steps:
+First, create a new general-purpose storage account to use for this tutorial. 
 
-(Add steps to start up the demo)
+*  Go to the [Azure portal](https://portal.azure.com) and log in using your Azure account. 
+*  On the Hub menu, select **New** > **Storage** > **Storage account - blob, file, table, queue**. 
+*  Enter a name for your storage account. The name must be between 3 and 24 characters in length and may contain numbers and lowercase letters only. It must also be unique.
+*  Set `Deployment model` to **Resource manager**.
+*  Set `Account kind` to **General purpose**.
+*  Set `Performance` to **Standard**. 
+*  Set `Replication` to **Locally Redundant storage (LRS)**.
+*  Set `Storage service encryption` to **Disabled**.
+*  Set `Secure transfer required` to **Disabled**.
+*  Select your subscirption. 
+*  For `resource group`, create a new one and give it a unique name. 
+*  Select the `Location` to use for your storage account.
+*  Check **Pin to dashboard** and click **Create** to create your storage account. 
 
-1.
-2.
-3.
+After your storage account is created, it is pinned to the dashboard. Click on it to open it. Under SETTINGS, click **Access keys**. Select a key and copy the CONNECTION STRING to the clipboard, then paste it into Notepad for later use.
 
-## Resources
+## Modify the connection string in the AzureApp.java file 
 
-(Any additional resources or related projects)
+Open this solution, and in the AzureApp.java file, change the value for connection string to the one retrieved from the portal. 
 
-- Link to supporting information
-- Link to similar sample
-- ...
+At this point, you can run this application. It creates its own file to upload and download, and then cleans up after itself by deleting everything at the end. 
