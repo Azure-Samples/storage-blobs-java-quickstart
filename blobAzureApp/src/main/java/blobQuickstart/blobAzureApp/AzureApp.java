@@ -68,41 +68,40 @@ public class AzureApp
         
         try {
   		  
-        	// Parse the connection string and create a blob client to interact with Blob storage
-        	storageAccount = CloudStorageAccount.parse(storageConnectionString);
-	    	blobClient = storageAccount.createCloudBlobClient();
-			container = blobClient.getContainerReference("quickstartcontainer");
-	    	
-  			// Create the container if it does not exist with public access.
-  			System.out.println("Creating container: " + container.getName());
-  			container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobRequestOptions(), new OperationContext());		    
-  
-  			//Creating a sample file
-  			sourceFile = File.createTempFile("sampleFile", ".txt");
-  			System.out.println("Creating a sample file at: " + sourceFile.toString());
-  			Writer output = new BufferedWriter(new FileWriter(sourceFile));
-  			output.write("Hello Azure!");
-  			output.close();
-  		    
-  			//Getting a blob reference
-  			CloudBlockBlob blob = container.getBlockBlobReference(sourceFile.getName());
-  		    
-  		    //Creating blob and uploading file to it
-  			System.out.println("Uploading the sample file ");
-  		    blob.uploadFromFile(sourceFile.getAbsolutePath());
+				// Parse the connection string and create a blob client to interact with Blob storage
+				storageAccount = CloudStorageAccount.parse(storageConnectionString);
+				blobClient = storageAccount.createCloudBlobClient();
+				container = blobClient.getContainerReference("quickstartcontainer");
 
-  		    //Listing contents of container
-  		    for (ListBlobItem blobItem : container.listBlobs()) {
-  		        System.out.println("URI of blob is: " + blobItem.getUri());
-  		    }
-  		
-  			// Download blob. In most cases, you would have to retrieve the reference
-  		    // to cloudBlockBlob here. However, we created that reference earlier, and 
-  			// haven't changed the blob we're interested in, so we can reuse it. 
-  			// Here we are creating a new file to download to. Alternatively you can also pass in the path as a string into downloadToFile method: blob.downloadToFile("/path/to/new/file").
-  		    downloadedFile = new File(sourceFile.getParentFile(), "downloadedFile.txt");
-  		    blob.downloadToFile(downloadedFile.getAbsolutePath());
-  		    
+				// Create the container if it does not exist with public access.
+				System.out.println("Creating container: " + container.getName());
+				container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobRequestOptions(), new OperationContext());		    
+
+				//Creating a sample file
+				sourceFile = File.createTempFile("sampleFile", ".txt");
+				System.out.println("Creating a sample file at: " + sourceFile.toString());
+				Writer output = new BufferedWriter(new FileWriter(sourceFile));
+				output.write("Hello Azure!");
+				output.close();
+
+				//Getting a blob reference
+				CloudBlockBlob blob = container.getBlockBlobReference(sourceFile.getName());
+
+				//Creating blob and uploading file to it
+				System.out.println("Uploading the sample file ");
+				blob.uploadFromFile(sourceFile.getAbsolutePath());
+
+				//Listing contents of container
+				for (ListBlobItem blobItem : container.listBlobs()) {
+					System.out.println("URI of blob is: " + blobItem.getUri());
+				}
+
+				// Download blob. In most cases, you would have to retrieve the reference
+				// to cloudBlockBlob here. However, we created that reference earlier, and 
+				// haven't changed the blob we're interested in, so we can reuse it. 
+				// Here we are creating a new file to download to. Alternatively you can also pass in the path as a string into downloadToFile method: blob.downloadToFile("/path/to/new/file").
+				downloadedFile = new File(sourceFile.getParentFile(), "downloadedFile.txt");
+				blob.downloadToFile(downloadedFile.getAbsolutePath());
         } 
     	catch (StorageException ex)
 		{
