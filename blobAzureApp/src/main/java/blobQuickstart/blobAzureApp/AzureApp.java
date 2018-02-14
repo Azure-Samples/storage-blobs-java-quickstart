@@ -128,16 +128,16 @@ public class AzureApp
 			System.out.println(String.format("Service error. Http code: %d and error code: %s", ex.getHttpStatusCode(), ex.getErrorCode()));
 		    }
 
-		    System.out.println("Deleting the source, and downloaded files");
+	        System.out.println("Deleting the source, and downloaded files");
 
-		    if(downloadedFile != null)
+	   	if(downloadedFile != null)
 			downloadedFile.deleteOnExit();
 
-		    if(sourceFile != null)
+	    	if(sourceFile != null)
 			sourceFile.deleteOnExit();
 
-		    //Closing scanner
-		    sc.close();
+	    	//Closing scanner
+	    	sc.close();
             }
     }
 }
