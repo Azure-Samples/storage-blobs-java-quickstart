@@ -4,11 +4,17 @@
 
   <groupId>blobQuickstart</groupId>
   <artifactId>blobAzureApp</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>blobAzureApp</name>
   <url>http://maven.apache.org</url>
+  <repositories>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+  </repositories>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,13 +27,13 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-	    <dependency>
-		<groupId>com.microsoft.azure</groupId>
-		<artifactId>azure-storage</artifactId>
-		<version>5.0.0</version>
-	</dependency>
+    <dependency>
+      <groupId>com.github.azure</groupId>
+      <artifactId>azure-storage-java-async</artifactId>
+      <version>publicPreview-SNAPSHOT</version>
+    </dependency>
   </dependencies>
-    <build>
+  <build>
     <plugins>
         <plugin>
             <groupId>org.codehaus.mojo</groupId>
@@ -38,5 +44,5 @@
             </configuration>
         </plugin>
     </plugins>
-</build>
+  </build>
 </project>
