@@ -45,6 +45,11 @@ After your storage account is created, it is pinned to the dashboard. Click on i
 
 ## Modify the connection string in the AzureApp.java file 
 
-Open this solution, and in the AzureApp.java file, change the value for connection string to the one retrieved from the portal. 
+Open this solution, and in the AzureApp.java file, change the value for connection string to the one retrieved from the portal as below:
+
+* Set `AccountName` to the name of your storage account
+* Set `AccountKey` to the Key copied from the portal
 
 At this point, you can run this application. It creates its own file to upload and download, and then cleans up after itself by deleting everything at the end. 
+
+* Command to run the application `mvn clean install exec:java` . This will compile all sources and run the main class AzureApp.java
