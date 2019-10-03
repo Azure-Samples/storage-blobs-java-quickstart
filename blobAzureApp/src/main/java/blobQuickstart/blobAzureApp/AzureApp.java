@@ -47,13 +47,15 @@ import java.util.Scanner;
 public class AzureApp 
 {
 	/* *************************************************************************************************************************
-	* Instructions: Update the storageConnectionString variable with your AccountName and Key and then run the sample.
+	* Instructions: Start an Azure storage emulator, such as Azurite, before running the app.
+	*    Alternatively, remove the "UseDevelopmentStorage=true;"; string and uncomment the 3 commented lines.
+	*    Then, update the storageConnectionString variable with your AccountName and Key and run the sample.
 	* *************************************************************************************************************************
 	*/
-	public static final String storageConnectionString =
-	"DefaultEndpointsProtocol=https;" +
-	"AccountName=<account-name>;" +
-	"AccountKey=<account-key>";
+	public static final String storageConnectionString = "UseDevelopmentStorage=true;";
+	//"DefaultEndpointsProtocol=https;" +
+	//"AccountName=<account-name>;" +
+	//"AccountKey=<account-key>";
 
 
 	public static void main( String[] args )
