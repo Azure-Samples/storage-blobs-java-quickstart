@@ -90,6 +90,8 @@ public class AzureApp
 			//Creating blob and uploading file to it
 			System.out.println("Uploading the sample file ");
 			blob.uploadFromFile(sourceFile.getAbsolutePath());
+			//Uploading it to a specific tier (HOT, COOL, ARCHIVE)
+			blob.uploadStandardBlobTier(StandardBlobTier.HOT);
 
 			//Listing contents of container
 			for (ListBlobItem blobItem : container.listBlobs()) {
